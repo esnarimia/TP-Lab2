@@ -1,0 +1,44 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Профиль пользователя</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f2f2f2;
+            padding: 40px;
+        }
+
+        .profile {
+            background: white;
+            max-width: 500px;
+            margin: auto;
+            padding: 30px;
+            border-radius: 10px;
+        }
+    </style>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<div class="profile">
+
+    <h1>Личный кабинет</h1>
+
+    <p><b>ID пользователя:</b> {{ user['id'] }}</p>
+
+    <p><b>Логин:</b> {{ user['username'] }}</p>
+
+    <p><b>Email:</b> {{ user['email'] }}</p>
+
+    <a href="/">На главную</a>
+
+</div>
+
+</body>
+</html>

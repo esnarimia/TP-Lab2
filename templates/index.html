@@ -1,0 +1,121 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EsmaShop — Магазин электроники</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<header class="header">
+    <div class="header-content">
+        <a href="/" class="logo">Esma<span>Shop</span></a>
+
+        <nav>
+            {% if session.get('user_id') %}
+                <span class="user-name">
+                    Привет, {{ session.get('username') }}!
+                </span>
+
+                <a href="{{ url_for('profile', user_id=session.get('user_id')) }}">
+                    Мой профиль
+                </a>
+
+                <a href="/logout">Выйти</a>
+            {% else %}
+                <a href="/login" class="login-link">Войти</a>
+            {% endif %}
+        </nav>
+    </div>
+</header>
+
+<main class="container">
+
+    <section class="hero">
+        <p class="hero-label">МАГАЗИН ЭЛЕКТРОНИКИ</p>
+
+        <h1>Технологии для<br>твоей жизни</h1>
+
+        <p class="hero-description">
+            Открой для себя мир современной электроники
+            вместе с EsmaShop.
+        </p>
+    </section>
+
+    <section class="catalog">
+
+        <div class="section-heading">
+            <div>
+                <h2>Наши товары</h2>
+                <p>Выбери то, что тебе нужно</p>
+            </div>
+        </div>
+
+        <form action="/search" method="GET" class="search-form">
+            <input
+                type="text"
+                name="q"
+                placeholder="Например, Laptop..."
+                value="{{ search_query or '' }}"
+            >
+
+            <button type="submit">Найти</button>
+        </form>
+
+        <div class="products">
+
+            {% for product in products %}
+
+                <div class="product-card">
+
+                    <div class="product-icon">
+                        {% if product['name'] == 'Laptop' %}
+                            💻
+                        {% elif product['name'] == 'Smartphone' %}
+                            📱
+                        {% elif product['name'] == 'Headphones' %}
+                            🎧
+                        {% else %}
+                            ⌨️
+                        {% endif %}
+                    </div>
+
+                    <h3>{{ product['name'] }}</h3>
+
+                    <p class="product-description">
+                        Качественная электроника для повседневного использования.
+                    </p>
+
+                    <div class="product-bottom">
+                        <span class="price">
+                            {{ product['price'] }} ₽
+                        </span>
+                        <span class="available">В наличии</span>
+                    </div>
+
+                </div>
+
+            {% else %}
+
+                <p class="empty-message">
+                    По вашему запросу ничего не найдено.
+                </p>
+
+            {% endfor %}
+
+        </div>
+
+    </section>
+
+</main>
+
+<footer>
+    <p>© 2026 EsmaShop. Магазин электроники.</p>
+</footer>
+
+</body>
+</html>

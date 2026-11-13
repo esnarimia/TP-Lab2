@@ -1,0 +1,29 @@
+ИЗМЕНЕНИЯ ДЛЯ УСТРАНЕНИЯ УЯЗВИМОСТЕЙ
+
+1.  SQL Injection
+
+Было (уязвимый код из app_vulnerable.py):
+
+    sql = “SELECT * FROM products WHERE name LIKE ’%” + query + “%’”
+    products = connection.execute(sql).fetchall()
+
+Стало (исправленный код в app.py):
+
+    sql = “SELECT * FROM products WHERE name LIKE ?” products =
+    connection.execute( sql, (“%” + query + “%”,) ).fetchall()
+
+2.  IDOR
+
+Было (уязвимый код из app_vulnerable.py):
+
+    if “user_id” not in session: return redirect(url_for(“login”))
+
+    connection = get_db_connection()
+
+Стало (исправленный код в app.py):
+
+    if “user_id” not in session: return redirect(url_for(“login”))
+
+    if user_id != session[“user_id”]: return “Доступ запрещён”, 403
+
+    connection = get_db_connection()

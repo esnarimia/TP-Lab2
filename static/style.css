@@ -1,0 +1,229 @@
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f5f7fc;
+    color: #172554;
+}
+
+/* Шапка */
+.header {
+    background: white;
+    border-bottom: 1px solid #e8edf5;
+}
+
+.header-content {
+    max-width: 1100px;
+    margin: auto;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 27px;
+    font-weight: bold;
+    color: #172554;
+    text-decoration: none;
+}
+
+.logo span {
+    color: #3977ee;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #334155;
+    font-weight: 600;
+}
+
+nav a:hover {
+    color: #3977ee;
+}
+
+.user-name {
+    color: #64748b;
+}
+
+/* Основная область */
+.container {
+    max-width: 1100px;
+    margin: auto;
+    padding: 35px 20px;
+}
+
+/* Приветственный блок */
+.hero {
+    background: linear-gradient(120deg, #172554, #315fc4);
+    color: white;
+    padding: 55px 45px;
+    border-radius: 18px;
+    margin-bottom: 45px;
+}
+
+.hero-label {
+    color: #b9d1ff;
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+.hero h1 {
+    font-size: 42px;
+    line-height: 1.2;
+    margin: 18px 0;
+    color: white;
+}
+
+.hero-description {
+    color: #dbeafe;
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+/* Каталог */
+.section-heading h2 {
+    font-size: 27px;
+    margin-bottom: 5px;
+}
+
+.section-heading p {
+    color: #64748b;
+}
+
+/* Поиск */
+.search-form {
+    display: flex;
+    gap: 10px;
+    margin: 25px 0;
+}
+
+.search-form input {
+    flex: 1;
+    padding: 14px;
+    border: 1px solid #dbe2ed;
+    border-radius: 9px;
+    font-size: 15px;
+    outline: none;
+}
+
+.search-form input:focus {
+    border-color: #3977ee;
+}
+
+button {
+    background: #3977ee;
+    color: white;
+    border: none;
+    padding: 14px 25px;
+    border-radius: 9px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+button:hover {
+    background: #245bc5;
+}
+
+/* Карточки товаров */
+.products {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+}
+
+.product-card {
+    background: white;
+    padding: 25px;
+    border-radius: 14px;
+    border: 1px solid #edf0f6;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.product-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 25px rgba(23, 37, 84, 0.08);
+}
+
+.product-icon {
+    font-size: 42px;
+    margin-bottom: 15px;
+}
+
+.product-card h3 {
+    font-size: 20px;
+    margin: 10px 0;
+}
+
+.product-description {
+    color: #64748b;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.product-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 22px;
+    gap: 8px;
+}
+
+.price {
+    font-size: 19px;
+    font-weight: bold;
+    color: #2563eb;
+}
+
+.available {
+    color: #15803d;
+    font-size: 12px;
+}
+
+.empty-message {
+    color: #64748b;
+}
+
+/* Подвал */
+footer {
+    text-align: center;
+    padding: 25px;
+    color: #94a3b8;
+    font-size: 14px;
+}
+
+/* Для телефонов */
+@media (max-width: 600px) {
+    .header-content {
+        flex-direction: column;
+        gap: 18px;
+    }
+
+    nav {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .hero {
+        padding: 35px 25px;
+    }
+
+    .hero h1 {
+        font-size: 32px;
+    }
+
+    .search-form {
+        flex-direction: column;
+    }
+}
